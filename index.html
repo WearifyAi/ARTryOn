@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="deepar-div" style="width: 100%; height: 90vh;"></div>
-<script type="module">
-    const urlSearchParams = new URLSearchParams(window.location.search);
-const params = Object.fromEntries(urlSearchParams.entries());
-console.log(params);
-          import * as deepar from 'https://cdn.jsdelivr.net/npm/deepar/js/deepar.esm.js';
-          (async function() {
-          const deepAR = await deepar.initialize({
-            licenseKey: 'fda85a4597e2d10a1f46755e737a3fd5aef437e474c21ee191310be853eeb1fa749ef44e4c168018',
-            previewElement: document.querySelector('#deepar-div'),
+    <script type="module">
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        import * as deepar from 'https://cdn.jsdelivr.net/npm/deepar/js/deepar.esm.js';
+        (async function () {
+            const deepAR = await deepar.initialize({
+                licenseKey: 'fda85a4597e2d10a1f46755e737a3fd5aef437e474c21ee191310be853eeb1fa749ef44e4c168018',
+                previewElement: document.querySelector('#deepar-div'),
 
-            additionalOptions: {
-          cameraConfig: {
-              facingMode: 'user'
-          }
-      }
-          });
-        await deepAR.switchEffect('./effects/555.deepar');
+                additionalOptions: {
+                    cameraConfig: {
+                        facingMode: 'user'
+                    }
+                }
+            });
+            await deepAR.switchEffect(`./effects/${params.effect}.deepar`);
 
         })();
 
 
     </script>
-    
+
 </body>
+
 </html>
