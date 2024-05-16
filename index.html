@@ -12,6 +12,7 @@
     <script type="module">
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
+        console.log(params);
         import * as deepar from 'https://cdn.jsdelivr.net/npm/deepar/js/deepar.esm.js';
         (async function () {
             const deepAR = await deepar.initialize({
@@ -20,7 +21,7 @@
 
                 additionalOptions: {
                     cameraConfig: {
-                        facingMode: params.isFront ? 'user' : 'environment'
+                        facingMode: params.isFront == 'true' ? 'user' : 'environment'
                     }
                 }
             });
