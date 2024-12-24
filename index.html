@@ -10,13 +10,57 @@
 <body>
     <div id="deepar-div" style="width: 100%; height: 100vh;"></div>
     <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getDatabase, ref, onValue, get, set } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCCnNKsa48fEZzg5E2W9A6dAKt_aTnBBfE",
+            authDomain: "w2wprod-f2fd0.firebaseapp.com",
+            databaseURL: "https://w2wprod-f2fd0-default-rtdb.firebaseio.com",
+            projectId: "w2wprod-f2fd0",
+            storageBucket: "w2wprod-f2fd0.appspot.com",
+            messagingSenderId: "541303304478",
+            appId: "1:541303304478:web:90e81c2e23b394bbdf590f",
+            measurementId: "G-CBNF7CR94E"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+
+        // Function to update or initialize the key
+        function updateOrCreateKey(key) {
+            const keyRef = ref(database, `pregomesh/${key}`);
+
+            get(keyRef)
+                .then((snapshot) => {
+
+                    if (snapshot.exists()) {
+                        const currentValue = snapshot.val();
+                        set(keyRef, [...currentValue, new Date().toISOString()])
+                            .then()
+                            .catch();
+                    } else {
+                        // If the key does not exist, initialize it with 1
+                        set(keyRef, [new Date().toISOString()])
+                            .then()
+                            .catch();
+                    }
+                })
+                .catch((error) => console.error("Error fetching data:", error));
+        }
+
+
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
-        console.log(params);
         import * as deepar from 'https://cdn.jsdelivr.net/npm/deepar@5.6.2/js/deepar.esm.js';
+        updateOrCreateKey(params?.effect);
         (async function () {
             const deepAR = await deepar.initialize({
-               // licenseKey: '5a86ec98a5e159a81ae629abf5fb9450bb07b2f2d3eca83ca332834a564eed0ff21f5fcb59e5050e',
+                // licenseKey: '5a86ec98a5e159a81ae629abf5fb9450bb07b2f2d3eca83ca332834a564eed0ff21f5fcb59e5050e',
                 licenseKey: '39ee4dfaf1a90e763a6ecc435d9dd9f8d4756a60b084095ef77ad49476c608e75a7912633697dd9c',
                 previewElement: document.querySelector('#deepar-div'),
 
