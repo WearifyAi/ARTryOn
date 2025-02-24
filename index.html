@@ -32,8 +32,12 @@
 
 
         // Function to update or initialize the key
-        function updateOrCreateKey(key) {
-            const keyRef = ref(database, `pregomesh/${key}`);
+        function updateOrCreateKey(key, cl) {
+            if (!cl) {
+                cl = 'pregomesh';
+            }
+
+            const keyRef = ref(database, `${client}/${key}`);
 
             get(keyRef)
                 .then((snapshot) => {
@@ -57,7 +61,7 @@
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
         import * as deepar from 'https://cdn.jsdelivr.net/npm/deepar@5.6.2/js/deepar.esm.js';
-        updateOrCreateKey(params?.effect);
+        updateOrCreateKey(params?.effect, params?.cl);
         (async function () {
             const deepAR = await deepar.initialize({
                 // licenseKey: '5a86ec98a5e159a81ae629abf5fb9450bb07b2f2d3eca83ca332834a564eed0ff21f5fcb59e5050e',
