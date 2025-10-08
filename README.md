@@ -1,6 +1,6 @@
 # AR Try-On Application
 
-A web-based Augmented Reality (AR) try-on application that allows users to virtually try on various accessories and items using DeepAR technology. The application supports multiple AR effects including watches, shoes, bags, bracelets, and other fashion accessories.
+A web-based Augmented Reality (AR) try-on application that allows users to virtually try on various accessories and items. The application supports multiple AR effects including watches, shoes, bags, bracelets, and other fashion accessories.
 
 ## 🚀 Features
 
@@ -17,7 +17,6 @@ A web-based Augmented Reality (AR) try-on application that allows users to virtu
 
 ## 🛠️ Technology Stack
 
-- **DeepAR SDK**: AR engine for real-time face tracking and 3D rendering
 - **Firebase**: Backend services for analytics and data storage
 - **Vanilla JavaScript**: Core application logic
 - **HTML5**: Web interface
@@ -27,12 +26,7 @@ A web-based Augmented Reality (AR) try-on application that allows users to virtu
 
 ```
 ARTryOn/
-├── effects/                 # DeepAR effect files (.deepar)
-│   ├── watches/            # Watch-related AR effects
-│   ├── shoes/              # Shoe-related AR effects
-│   ├── bags/               # Bag-related AR effects
-│   ├── jewelry/            # Jewelry and bracelet effects
-│   └── accessories/         # Other accessory effects
+├── effects/                 #  effect files ()
 ├── index.html              # Main application file
 └── README.md               # Project documentation
 ```
@@ -43,7 +37,6 @@ ARTryOn/
 
 - Modern web browser with WebRTC support
 - HTTPS connection (required for camera access)
-- DeepAR license key
 
 ### Installation
 
@@ -86,7 +79,7 @@ ARTryOn/
 
 ### URL Parameters
 
-- `effect`: Name of the DeepAR effect file (without .deepar extension)
+- `effect`: Name of the effect file (without extension)
 - `camera`: Camera orientation (`front` for selfie camera, `back` for rear camera)
 - `cl`: Category label for analytics (optional, defaults to 'pregomesh')
 
@@ -118,14 +111,6 @@ ARTryOn/
 - `OmegaBracelet` - Omega bracelet
 - `F1Cap` - F1 racing cap
 - `aviators` - Aviator sunglasses
-
-## 🔧 Configuration
-
-### DeepAR License
-Update the license key in `index.html`:
-```javascript
-licenseKey: 'your-deepar-license-key-here'
-```
 
 ### Firebase Configuration
 Update the Firebase config object with your project details:
@@ -197,7 +182,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 2. **Effects not loading**
    - Check effect file paths
-   - Verify DeepAR license key
    - Ensure effect files are accessible
 
 3. **Firebase errors**
@@ -208,7 +192,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ### Support
 
 For support and questions:
-- Check the [DeepAR Documentation](https://docs.deepar.io/)
 - Review browser console for error messages
 - Ensure all dependencies are properly loaded
 
@@ -222,5 +205,3 @@ For support and questions:
 - [ ] Multi-language support
 
 ---
-
-**Note**: This application requires a valid DeepAR license for production use. Ensure you have the proper licensing before deploying to production environments.
