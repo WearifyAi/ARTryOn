@@ -70,7 +70,7 @@
 
                 additionalOptions: {
                     cameraConfig: {
-                        facingMode: params.isFront? 'user' : 'environment'
+                        facingMode: params.isFront == 'true'? 'user' : 'environment'
                     }
                 }
             });
